@@ -1,0 +1,111 @@
+// <span class="dashicons dashicons-editor-help" data-tooltip="Tooltip help here!" data-flow="right">CSS Tooltips</span>
+
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+  &:before, &:after {
+    line-height: 1;
+    font-size: .9em;
+    pointer-events: none;
+    position: absolute;
+    box-sizing: border-box;
+    display: none;
+    opacity: 0;
+  }
+  &:before {
+    content: "";
+    border: 5px solid transparent;
+    z-index: 100;
+  }
+  &:after {
+    content: attr(data-tooltip);
+    text-align: center;
+    min-width: 3em;
+    max-width: 21em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 4px 12px;
+    border-radius: 9px;
+    background: #4621FF;
+    color: #FFFFFF;
+    z-index: 99;
+    text-shadow: 2px 0px 0px #800000;
+  }
+  &:hover:before, &:hover:after {
+    display: block;
+    opacity: 1;
+  }
+  &:not([data-flow])::before,
+  &[data-flow="top"]::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #4621FF;
+  }
+  &:not([data-flow])::after,
+  &[data-flow="top"]::after {
+    bottom: calc(100% + 5px);
+  }
+  &:not([data-flow])::before, [tooltip]:not([data-flow])::after,
+  &[data-flow="top"]::before,
+  &[data-flow="top"]::after {
+    left: 50%;
+    -webkit-transform: translate(-50%, -4px);
+            transform: translate(-50%, -4px);
+  }
+  &[data-flow="bottom"] {
+    &::before {
+      top: 100%;
+      border-top-width: 0;
+      border-bottom-color: #4621FF;
+    }
+    &::after {
+      top: calc(100% + 5px);
+    }
+    &::before, &::after {
+      left: 50%;
+      -webkit-transform: translate(-50%, 8px);
+              transform: translate(-50%, 8px);
+    }
+  }
+  &[data-flow="left"] {
+    &::before {
+      top: 50%;
+      border-right-width: 0;
+      border-left-color: #4621FF;
+      left: calc(0em - 5px);
+      -webkit-transform: translate(-8px, -50%);
+              transform: translate(-8px, -50%);
+    }
+    &::after {
+      top: 50%;
+      right: calc(100% + 5px);
+      -webkit-transform: translate(-8px, -50%);
+              transform: translate(-8px, -50%);
+    }
+  }
+  &[data-flow="right"] {
+    &::before {
+      top: 50%;
+      border-left-width: 0;
+      border-right-color: #4621FF;
+      right: calc(0em - 5px);
+      -webkit-transform: translate(8px, -50%);
+              transform: translate(8px, -50%);
+    }
+    &::after {
+      top: 50%;
+      left: calc(100% + 5px);
+      -webkit-transform: translate(8px, -50%);
+              transform: translate(8px, -50%);
+    }
+  }
+}
+[data-tooltip=""]::after, [data-tooltip=""]::before {
+  display: none !important;content: none;
+}
+
+
+
+
+

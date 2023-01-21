@@ -1,0 +1,89 @@
+
+
+
+.fwp-popup-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  position: fixed;
+  z-index: 9999999;
+  visibility: hidden;
+  transition: opacity 500ms;
+  background: rgba(0, 0, 0, 0.7);
+  &:target {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.fwp-popup-body {
+  top: 50%;
+  // left: 35%;
+  width: 30%;
+  left: unset;
+  right: unset;
+  margin: auto;
+  bottom: unset;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  background: #fff;
+  transition: all 5s ease-in-out;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  // -webkit-transform: translate(-50%, -50%);
+  //         transform: translate(-50%, -50%);
+  h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+  }
+  .close {
+    top: 10px;
+    right: 10px;
+    color: #333;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 20px;
+    position: absolute;
+    text-decoration: none;
+    transition: all 200ms;
+    &:hover {
+      color: #06D85F;
+    }
+  }
+  .content {
+    max-height: 30%;
+    overflow: auto;
+    ul {
+      list-style: none;
+      // li {
+      //   text-align: left;
+      // }
+    }
+  }
+  @include mq($until: 900px ) {
+    width: 70%;
+  }
+}
+/**
+  <h1>Popup/Modal Windows without JavaScript</h1>
+  <div class="box">
+    <a class="button" href="#fwp-popup-overlay-1">Let me Pop up</a>
+  </div>
+
+  <div id="fwp-popup-overlay-1" class="fwp-popup-overlay">
+    <div class="fwp-popup-body">
+      <h2>Here i am</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+        Thank to pop me out of that button, but now i'm done so you can close this window.
+      </div>
+    </div>
+  </div>
+*/
+
+
+
